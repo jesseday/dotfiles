@@ -1,0 +1,40 @@
+[user]
+	name = Jesse Day
+	email = 09jday@gmail.com
+[pull]
+	rebase = true
+[alias]
+	stuff = stash -u
+	pra = pull --rebase --autostash
+	patch = !git --no-pager diff
+	today = log --pretty=format:%s --since=yesterday --author=Day
+  me = log --pretty=format:%s --author=Day
+  onelinelog = log --pretty=oneline
+  reword = rebase -i
+  stash-untracked = "!f() {    \
+    git stash;               \
+    git stash -u;            \
+    git stash pop stash@{1}; \
+}; f"
+[core]
+	excludesfile = /Users/jesse/.gitignore_global
+	autocrlf = input
+[pager]
+  diff = diff-so-fancy | less --tabs=4 -RF --pattern '^(Date|added|deleted|modified): '
+  show = diff-so-fancy | less --tabs=4 -RF --pattern '^(Date|added|deleted|modified): '
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[init]
+	templatedir = ~/.git-templates
