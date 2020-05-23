@@ -1,0 +1,41 @@
+# Coding Standards
+alias drupalcs="phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor"
+alias drupalpcs="phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor"
+alias drupalcbf="phpcbf --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md --ignore=node_modules,bower_components,vendor"
+alias phpcscomp="phpcs -p --standard=PHPCompatibility --extensions=php,module,inc,install,test,profile,theme --ignore=node_modules,bower_components,vendor"
+
+# Databases
+alias sql="mysql -u root"
+alias sql.restart="mysql.server stop && mysql.server start"
+alias redis.start="$HOME/Applications/redis/src/redis-server"
+alias redis.cli="$HOME/Applications/redis/src/redis-cli"
+
+# Git
+alias gpu="git push -u"
+alias gp="git push"
+alias gm="git commit"
+alias gap="git add -p"
+alias gco="git checkout"
+alias gs="git status"
+alias gsh="git stash"
+alias gsf="git stuff"
+
+# Laravel
+alias artisan="php artisan"
+alias aa="php artisan"
+alias pp="php please"
+
+# PHPUnit
+alias tt="./vendor/bin/phpunit"
+alias tte="tt --exclude-group"
+alias ttf="tt --filter"
+alias ttg="tt --group"
+
+# Other
+alias dc="docker-compose"
+alias fs="find . -type f | fzf | yank"
+alias py="python"
+alias ll="ls -lahF"
+alias myip="curl http://ipecho.net/plain; echo"
+alias phpini="sudo vim /usr/local/etc/php/"
+alias apachelogs="sudo vim /usr/local/var/log/apache2/"
