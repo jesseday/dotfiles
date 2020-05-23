@@ -1,4 +1,18 @@
 # Dotfiles
 
-Based on https://github.com/thoughtbot/dotfiles/blob/aaa2c3cd09eb2148e19268e5ef827fab0292b7cd/README.md, using the same file structure to work with rcm, but without
-adding all of Thoughtbot's aliases and settings.
+Intended to be used with https://github.com/jesseday/dotfiles-1,
+a fork of Thoughtbot's dotfiles repo, and rcup.
+
+
+## Prerequisites
+
+ * https://github.com/thoughtbot/rcm - if you have run the thoughtbot laptop
+   setup script this will likely be installed.
+
+
+## Install
+
+ * Clone https://github.com/jesseday/dotfiles-1 into ~/dotfiles.
+ * Clone this repo into ~/dotfiles-local
+ * Add a `~/dotfiles-local/gitconfig-user.local` file with your global username and email address.
+ * run `rcup && source ~/.zsrhc`
