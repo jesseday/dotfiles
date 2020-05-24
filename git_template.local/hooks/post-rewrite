@@ -11,7 +11,7 @@ if [ -f $rebasing_file ]; then
 
   if [ "$(git diff $sha_pre_rebase)" ]; then
     echo "Your rebase resulted in code changes"
-    git diff $sha_pre_rebase
+    git patch $sha_pre_rebase
 
     while true; do
       printf  "Do you want to keep the changes? [Y/n] "
