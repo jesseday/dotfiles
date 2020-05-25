@@ -3,8 +3,8 @@
 [alias]
 	stuff = stash -u
 	pra = pull --rebase --autostash
-	fancy-diff = diff
-	fd = fancy-diff
+	diff-fancy = diff
+	df = diff-fancy
 	today = log --pretty=format:%s --since=yesterday --author=Day
 	me = log --pretty=format:%s --author=Day
 	onelinelog = log --pretty=oneline
@@ -18,7 +18,7 @@
 	excludesfile = /Users/jesse/.gitignore_global
 	autocrlf = input
 [pager]
-  fancy-diff = diff-so-fancy | less --tabs=4 -RF --pattern '^(Date|added|deleted|modified): '
+  diff-fancy = diff-so-fancy | less --tabs=4 -RF --pattern '^(Date|added|deleted|modified): '
   show = diff-so-fancy | less --tabs=4 -RF --pattern '^(Date|added|deleted|modified): '
 [color]
 	ui = true
