@@ -1,0 +1,10 @@
+function shield-pass() {
+    if ! command -v yq >/dev/null; then
+        echo "yq is required to run this command: 'brew install yq'"
+        exit 1
+    fi;
+
+    DIR=$(pwd)
+    PASS=$(yq r $DIR/$1/shield.settings.yml credentials.shield.pass)
+    echo $PASS
+}
