@@ -5,6 +5,7 @@
 	pra = pull --rebase --autostash
 	diff-fancy = diff
 	df = diff-fancy
+  fd = diff-fancy
 	today = log --pretty=format:%s --since=yesterday --author=Day
 	me = log --pretty=format:%s --author=Day
 	onelinelog = log --pretty=oneline
