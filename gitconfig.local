@@ -1,6 +1,10 @@
 [pull]
 	rebase = true
 [alias]
+    # branches
+	## 10 most recently used local branches
+	mru = for-each-ref --sort=-committerdate --count=10 refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
 	# diffing
 	diff-fancy = diff
 	df = diff-fancy
@@ -10,6 +14,10 @@
 	today = log --pretty=format:%s --since=yesterday --author=Day
 	me = log --pretty=format:%s --author=Day
 	onelinelog = log --pretty=oneline
+	what-added = log --diff-filter=A
+	what-deleted = log --diff-filter=D
+	what-renamed = log --diff-filter=R
+	what-changed = log --diff-filter=M
 
 	# other
 	root = rev-parse --show-toplevel
