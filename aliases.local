@@ -19,6 +19,7 @@ alias gco="git checkout"
 alias gs="git status"
 alias gsh="git stash"
 alias gsf="git stuff"
+alias gcdr='cd $(git root)'
 
 # Laravel
 alias artisan="php artisan"

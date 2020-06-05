@@ -1,15 +1,25 @@
 [pull]
 	rebase = true
 [alias]
-	stuff = stash -u
-	pra = pull --rebase --autostash
+	# diffing
 	diff-fancy = diff
 	df = diff-fancy
-  fd = diff-fancy
+    fd = diff-fancy
+
+	# logging
 	today = log --pretty=format:%s --since=yesterday --author=Day
 	me = log --pretty=format:%s --author=Day
 	onelinelog = log --pretty=oneline
+
+	# other
+	root = rev-parse --show-toplevel
+	
+	# rebasing
+	pra = pull --rebase --autostash
 	reword = rebase -i
+
+	# stashing
+	stuff = stash -u
 	stash-untracked = "!f() {    \
 		git stash;               \
 		git stash -u;            \
