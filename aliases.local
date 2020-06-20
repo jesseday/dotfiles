@@ -10,6 +10,9 @@ alias sql.restart="mysql.server stop && mysql.server start"
 alias redis.start="$HOME/Applications/redis/src/redis-server"
 alias redis.cli="$HOME/Applications/redis/src/redis-cli"
 
+# Drupal
+alias drush="./vendor/bin/drush"
+
 # Git
 alias gpu="git push -u"
 alias gp="git push"
