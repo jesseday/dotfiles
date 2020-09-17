@@ -12,6 +12,7 @@ alias redis.cli="$HOME/Applications/redis/src/redis-cli"
 
 # Drupal
 alias drush="./vendor/bin/drush"
+alias ld="lando drush"
 
 # Git
 alias gpu="git push -u"
@@ -45,3 +46,7 @@ alias phpini="sudo vim /usr/local/etc/php/"
 alias apachelogs="sudo vim /usr/local/var/log/apache2/"
 alias sites="cd ~/www"
 alias sp="shield-pass"
+alias spprod="sp config/envs/prod | pbcopy"
+alias spqa="sp config/envs/ah_other | pbcopy"
+alias spstage="sp config/envs/stage | pbcopy"
+alias spdev="sp config/envs/dev | pbcopy"
