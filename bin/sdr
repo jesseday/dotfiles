@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Recursively run sd search and replace command on all files in given dir.
+
+set -e
+
+find $3 -print | xargs sd $1 $2
