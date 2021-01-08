@@ -1,4 +1,6 @@
 .idea
+.idea/*
+.vscode
 docroot/sites/*.local/*
 sites/*.local/*
 
