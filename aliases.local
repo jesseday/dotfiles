@@ -21,6 +21,8 @@ alias lb="lando blt"
 alias lc="lando composer"
 alias ld="lando drush"
 alias ly="lando yarn"
+alias la="lando artisan"
+alias lp="lando php"
 
 # Tufts
 alias lyt="lando yarn --cwd /app/docroot/themes/custom/tuftstheme"
