@@ -4,28 +4,30 @@ set -e
 
 while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
   -d | --delete )
-    git branch --merged | egrep -v "(^\*|$2)" | xargs git branch -d
+    BRANCHES=${2//,/|}
+    git branch --merged | egrep -v "(^\*|$BRANCHES)" | xargs git branch -d
     exit
     ;;
   -h | --help )
     echo "Git Delete Merged Branches"
     echo ""
     echo "Non-destructive by default, this will show merged branches that are not passed as protected arguments."
-    echo "Pass protected branches as pipe delimited arguments"
+    echo "Pass protected branches as comma delimited arguments"
     echo ""
     echo "Equivalent to: git branch --merged | egrep -v '(^\*|protected-branch-1|protected-branch-2)'"
     echo "          and: git branch --merged | egrep -v '(^\*|protected-branch-1|protected-branch-2)' | xargs git branch -d"
     echo ""
-    echo "usage: gbd <protected-branch-1|protected-branch-2>"
-    echo "   or: gbd -d <protected-branch-1|protected-branch-2|...>"
+    echo "usage: gbd <protected-branch-1,protected-branch-2>"
+    echo "   or: gbd -d <protected-branch-1,protected-branch-2,...>"
     echo "   or: gbd -h"
     echo ""
     echo "Options:"
-    echo "   -d, --delete    Delete merged branches not listed as protected.  Excludes branches named by <protected-branch-1|protected-branch-2|...>"
+    echo "   -d, --delete    Delete merged branches not listed as protected.  Excludes branches named by <protected-branch-1,protected-branch-2,...>"
     echo "   -h, --help      Show this help."
     exit;
     ;;
 esac; shift; done
 if [[ "$1" == '--' ]]; then shift; fi
 
-git branch --merged | egrep -v "(^\*|$1)"
+BRANCHES=${1//,/|}
+git branch --merged | egrep -v "(^\*|$BRANCHES)"
