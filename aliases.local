@@ -52,7 +52,7 @@ alias ttf="tt --filter"
 alias ttg="tt --group"
 
 # Other
-alias rm="trash"
+alias rm="safe-rm"
 alias dc="docker-compose"
 alias fs="find . -type f | fzf | yank"
 alias py="python"

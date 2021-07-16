@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+
+while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
+  -H | --help )
+    echo "Safely delete files or directories using the trash-cli npm utility."
+    echo ""
+    echo "Options:"
+    echo "-H, --help: Display this help"
+    echo "-U, --unsafe: Use the built in rm command."
+    exit
+    ;;
+  -U | --unsafe )
+    shift; unsafe=true
+    ;;
+esac; done
+if [[ "$1" == '--' ]]; then shift; fi
+
+
+if [[ "$unsafe" ]]; then
+    rm "${@}"
+else
+    trash "${@}"
+fi
