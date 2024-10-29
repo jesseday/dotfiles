@@ -1,0 +1,69 @@
+#!/usr/bin/env zx
+
+/**
+ * @file Git Delete Branches
+ * @description Interactive script to delete local branches
+ */
+
+const argv = minimist(process.argv.slice(2), {
+  boolean: ["force", "help"],
+  alias: {
+    'D': "force",
+    h: "help",
+    p: "pattern",
+    i: "ignore",
+  },
+});
+
+if (argv.help) {
+  await echo(`
+  Interactive script to delete local branches.
+  Usage: gdb [options]
+
+  Options:
+    -h, --help      Show this help message and exit
+    -D, --force     Force delete branches
+    -p, --pattern   Branch name pattern to scope the cleanup
+    -i, --ignore    Branch name pattern to ignore
+  `)
+  ;
+  process.exit(0);
+}
+
+const branch = (await $`git branch --show-current`)
+  .toString()
+  .replace(/\n$/g, "");
+
+echo("");
+echo(`Current branch: ${branch}`);
+echo("Cleaning up local branches...");
+echo("");
+
+let branches = (await $`git branch --list`)
+  .toString()
+  .split("\n")
+  .map((b) => b.replace(/^\* /, "").trim())
+  .filter((b) => b !== branch)
+  .filter((b) => b !== "main")
+  .filter((b) => b !== "master")
+  .filter((b) => b !== "");
+
+if (argv.pattern) {
+  const pattern = new RegExp(argv.pattern);
+  branches = branches.filter((b) => pattern.test(b));
+}
+
+if (argv.ignore) {
+  const ignore = new RegExp(argv.ignore);
+  branches = branches.filter((b) => !ignore.test(b));
+}
+
+for (const b of branches) {
+  const d = await question(`Delete branch "${b}" [y/n]?  `);
+  if (d === "y") {
+    echo(chalk.red(`Deleting branch: ${b}`));
+    await $`git branch ${argv.force ? '-D' : '-d'} ${b}`;
+  } else {
+    echo(chalk.green(`Skipping branch: ${b}`));
+  }
+}
