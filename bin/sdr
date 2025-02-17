@@ -1,7 +1,72 @@
-#!/bin/sh
+#!/usr/bin/env zx
 
-# Recursively run sd search and replace command on all files in given dir.
+/**
+ * @file Search and Replace in Directory
+ */
 
-set -e
+const argv = minimist(process.argv.slice(2), {
+  boolean: ["help", "preview", "verbose"],
+  alias: {
+    p: "preview",
+    h: "help",
+    v: "verbose",
+  },
+});
 
-find $3 -print | xargs sd $1 $2
+if (argv.help) {
+  await echo(`
+    Interactive script to search and replace in a directory.
+    Usage: sdr [options] <search> <replace> <directory>
+
+    Options:
+      -h, --help      Show this help message and exit
+      -p, --preview   Preview changes without modifying files
+  `);
+  process.exit(0);
+}
+
+if (argv._.length < 4) {
+  await echo("Missing required arguments: <search> <replace> <directory>");
+  process.exit(1);
+}
+
+const [_, search, replace, directory] = argv._;
+
+let files;
+try {
+  files = await $`grep -rl ${search} ${directory}`;
+  files = files
+    .toString()
+    .split("\n")
+    .filter((f) => f !== "");
+
+  if (files.length === 0) {
+    throw new Error();
+  }
+} catch (error) {
+  await echo("No files found with the search term");
+  process.exit(0);
+}
+
+await echo("");
+await echo(`Found ${files.length} files with the search term "${search}"`);
+await echo("");
+for (const file of files) {
+  if (argv.verbose && argv.preview) {
+    await echo("");
+    await echo("");
+    await echo("");
+  }
+  await echo(argv.verbose ? chalk.green(file) : file);
+
+  let output;
+  if (!argv.preview) {
+    await $`sed -i '' 's/${search}/${replace}/g' ${file}`;
+  } else {
+    output = await $`sed -i '' 's/${search}/${replace}/g' ${file}`;
+  }
+  if (argv.verbose && argv.preview) {
+    await echo("");
+    await echo(output);
+  }
+}
