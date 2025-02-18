@@ -44,7 +44,7 @@ alias ttf="tt --filter"
 alias ttg="tt --group"
 
 # Other
-alias zed="/Applications/Zed.app/Contents/MacOS/cli"
+# alias zed="/Applications/Zed.app/Contents/MacOS/cli"
 alias ll="eza -lahF"
 alias myip="curl http://ipecho.net/plain; echo"
 alias phpini="sudo vim /usr/local/etc/php/"

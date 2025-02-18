@@ -6,6 +6,15 @@
 docroot/sites/*.local/*
 sites/*.local/*
 
+# Other #
+#########
+.env
+.git/
+/log
+/node_modules/
+db/*.sqlite3
+log/*.log
+
 # Packages #
 ############
 *.7z

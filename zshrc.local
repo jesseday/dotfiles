@@ -100,10 +100,13 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
-source /Users/jesse/.asdf/asdf.sh
 export DENO_INSTALL="/Users/jesse/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$HOME/.gem/bin:$PATH
+
+# ASDF Config
+export ASDF_DATA_DIR="/Users/jesse/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_available
 
 fpath=(~/.zsh $fpath)
