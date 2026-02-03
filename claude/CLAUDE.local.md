@@ -17,6 +17,7 @@ When asked to summarize a session or interaction, there are two types of summari
 - Include: what was worked on, key decisions made, code references, and any open questions or next steps
 
 ### General Rules
+- When asked to write a summary of today's work, first run the `date` command to determine the current date
 - Write notes in markdown format
 - Save to `notes/summaries/` directory (which is a symlink to a directory outside this repo)
 - Use clear headings, bullet points, and code references as appropriate
