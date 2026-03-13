@@ -12,3 +12,4 @@ This is not an exhaustive list
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [git](https://formulae.brew.sh/formula/git)
 - [nvim](https://github.com/jesseday/kickstart.nvim)
+- [bun](https://bun.com/)
