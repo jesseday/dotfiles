@@ -62,9 +62,9 @@ console.log(
   chalk.dim(`Searching for #retro tags from ${formatDate(from)} to ${formatDate(to)}`)
 );
 
-// Search vault for #retro
+// Search vault for #retro tag
 const result =
-  await $`${OBSIDIAN} search query="#retro" 2>&1 | grep -v "Loading\\|installer"`.nothrow();
+  await $`${OBSIDIAN} tag name=retro 2>&1 | grep -v "Loading\\|installer"`.nothrow();
 
 const output = result.stdout.trim();
 if (!output || output.includes("No matches")) {
