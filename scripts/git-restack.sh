@@ -13,7 +13,7 @@
 # Always prompts to confirm head/base/trunk before acting, unless -y is passed.
 #
 # Install as a git alias:
-#   git config --global alias.restack '!~/me/scripts/git-restack.sh'
+#   git config --global alias.restack '!/path/to/this-repo/scripts/git-restack.sh'
 
 set -euo pipefail
 

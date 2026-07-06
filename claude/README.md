@@ -13,5 +13,5 @@ For example:
 
 ```bash
 cd ~/code/my-project
-ln -s ~/me/claude/CLAUDE.md CLAUDE.md
+ln -s /path/to/this-repo/claude/CLAUDE.md CLAUDE.md
 ```

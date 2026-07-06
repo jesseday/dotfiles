@@ -9,5 +9,5 @@ For example
 
 ```bash
 cd ~/.oh-my-zsh/custom
-ln -s ~/me/zsh-plugins/list-todos.zsh list-todos.zsh
+ln -s /path/to/this-repo/zsh-plugins/list-todos.zsh list-todos.zsh
 ```
