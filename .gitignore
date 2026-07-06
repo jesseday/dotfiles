@@ -1,0 +1,5 @@
+env/*
+claude/.claude/settings.local.json
+skills/private/*
+iterm/*
+tmp/*
