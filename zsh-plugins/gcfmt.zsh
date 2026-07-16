@@ -2,7 +2,12 @@
 # at the git repo root (handles go.work multi-module layouts, where you'd
 # otherwise type --config=../.golangci.yml).
 #
-# Usage: gcfmt [paths...]   # defaults to ./...
+# Usage: gcfmt [paths...]
+#
+#   gcfmt                 # format the whole repo (./...)
+#   gcfmt ./pkg/...       # format a package tree
+#   gcfmt a.go b.go       # format specific files
+#   gcfmt -h              # golangci-lint fmt's help (flags are passed through)
 function gcfmt() {
     local root config
     root="$(git rev-parse --show-toplevel 2>/dev/null)" || {
