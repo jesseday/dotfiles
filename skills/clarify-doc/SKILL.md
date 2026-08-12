@@ -9,6 +9,13 @@ description: >-
   tightened, or edited for a busy reader. Trigger even if the user just says "clarify
   this," "polish this doc," "tighten this," or "this is a lot." Owns the whole editing
   pipeline and delegates the sentence-level and AI-ism phases to the appropriate skills.
+optional-dependencies:
+  - name: writing-clearly-and-concisely
+    url: https://www.skills.sh/obra/the-elements-of-style/writing-clearly-and-concisely
+    used-for: phase 2 deep pass
+  - name: avoid-ai-writing
+    url: https://www.skills.sh/conorbronsdon/avoid-ai-writing/avoid-ai-writing
+    used-for: phase 3 deep pass
 ---
 
 # Clarify Doc
@@ -34,24 +41,44 @@ phase never runs before a phase that could delete its input.
 
 ```
 1. Declutter        structure, volume, redundancy          (this skill — see Phase 1)
-2. Clarify          sentence-level clarity and concision    (writing-clearly-and-concisely)
-3. AI-writing check tone / AI tells / formatting            (avoid-ai-writing, edit mode)
+2. Tighten          sentence-level clarity and concision    (checklist below, or escalate)
+3. AI-writing check tone / AI tells / formatting            (checklist below, or escalate)
 4. Fresh-eyes review declutter review over the FULL doc      (this skill, in a subagent)
    └─ if phase 4 finds real cuts or restructuring:
       apply them, then re-run phases 2 and 3 (full-doc), then phase 4 again,
       until the review comes back clean.
 ```
 
-Phases 2 and 3 are other skills. Invoke `writing-clearly-and-concisely` for phase 2 and
-`avoid-ai-writing` (in edit-in-place mode) for phase 3. If a skill isn't available, apply
-its principles inline, but prefer the dedicated skill — it's more thorough and keeps the
-division of labor clean.
+### Phases 2 and 3: run light by default, escalate deliberately
+
+Two installable skills do phases 2 and 3 more thoroughly than the checklists below, and
+both are expensive in context:
+
+| Phase | Deep pass | Cost |
+|-------|-----------|------|
+| 2 — Tighten | [`writing-clearly-and-concisely`](https://www.skills.sh/obra/the-elements-of-style/writing-clearly-and-concisely) | thin index; its `elements-of-style.md` reference is ~12k tokens |
+| 3 — AI check | [`avoid-ai-writing`](https://www.skills.sh/conorbronsdon/avoid-ai-writing/avoid-ai-writing) | ~15k tokens on load, unconditionally |
+
+**Default to the checklists below.** They catch most of what the deep passes catch, at
+roughly no context cost, and they let this skill run standalone.
+
+**Escalate to the deep pass** when the doc is high-stakes or external-facing, when the
+checklist pass keeps finding problems (a sign the prose needs more than a sweep), or when
+the user asks for a Strunk pass / a real AI-ism audit by name.
+
+**When you escalate, do it in a subagent.** Hand the fresh agent the *file path* and the
+skill name, tell it to edit in place and report what it changed. The 12–15k tokens then
+land in a throwaway context instead of yours — which is what makes escalation affordable
+at all. Escalate inline only if no subagent capability exists.
+
+If a deep-pass skill isn't installed, the checklist *is* the phase. Don't skip the phase
+and don't block on installing anything.
 
 ### Why this order
 
 - **Declutter first.** It deletes whole sentences and sections. Polishing a sentence you're
   about to cut is wasted work, so structure comes before wording.
-- **Clarify before the AI check.** Clarifying rewords surviving sentences; the AI check then
+- **Tighten before the AI check.** Tightening rewords surviving sentences; the AI check then
   verifies the *final* wording carries no tells. They nearly commute, so don't agonize over
   it — but letting the tone gate see the finished wording is the better call.
 - **Fresh-eyes review last.** A reader with no memory of the doc catches accumulated overload
@@ -64,7 +91,7 @@ The phases overlap at the edges and will oscillate if you don't hold the boundar
 
 - **Declutter owns whole sentences and sections** — what should exist at all, and in what
   order. Redundancy, bloat, buried points, bad structure.
-- **Clarify owns wording *within a kept sentence*** — active voice, needless words, tangled
+- **Tighten owns wording *within a kept sentence*** — active voice, needless words, tangled
   clauses. It assumes the sentence should exist.
 - **AI check owns tells and tone** — hollow phrasing, hedging, em-dashes, bold overuse,
   formatting tics.
@@ -228,6 +255,58 @@ put it back (compressed or relocated, but present).
 
 ---
 
+# Phase 2 — Tighten (light pass)
+
+Sentence-level only: assume each surviving sentence should exist, and make it carry its
+point with less work from the reader. Eight rules cover most of it:
+
+1. **Use active voice.** "The worker retries the job," not "the job is retried by the worker."
+2. **Omit needless words.** Cut "the fact that," "in order to," "it is important to note
+   that," "there is/are … that." Most sentences lose 20% with no loss of meaning.
+3. **Put statements in positive form.** "Fails on empty input" beats "does not succeed
+   unless input is non-empty."
+4. **Be concrete and specific.** "Under 200 ms at p99" beats "performant."
+5. **Keep related words together.** A modifier stranded from what it modifies makes the
+   reader re-parse the sentence.
+6. **Put the emphatic word last.** The end of a sentence is the position of stress; don't
+   spend it on a trailing qualifier.
+7. **Start each paragraph with its topic sentence.** Someone skimming first lines should
+   get the section.
+8. **Vary sentence structure.** A run of same-length, same-shape sentences reads as flat
+   even when each one is fine.
+
+Escalate to `writing-clearly-and-concisely` (in a subagent) when the prose is stiff enough
+that this sweep keeps finding the same problems, or when the doc is external-facing.
+
+# Phase 3 — AI-writing check (light pass)
+
+Tone and tells, not meaning. Work through the doc looking for:
+
+- **Em-dashes used as all-purpose connectors.** One or two per doc reads as voice; one per
+  paragraph reads as machine. Recast as periods, commas, or colons.
+- **The "not just X, but Y" / "isn't about X — it's about Y" frame**, and rule-of-three
+  lists that pad rather than enumerate.
+- **Hedging stacks**: "may potentially," "could possibly help to," "generally tends to."
+  Commit or cut.
+- **Throat-clearing openers**: "It's worth noting that," "In today's landscape," "Let's
+  dive in."
+- **Hollow intensifiers**: "crucial," "vital," "robust," "seamless," "powerful,"
+  "game-changing," "leverage" as a verb.
+- **Summary sentences that restate the paragraph** they just ended without adding anything.
+- **Bold overuse.** If several phrases per paragraph are bold, none of them are emphasis.
+- **Uniform bullet lists** where every item is the same length and shape — a tell that the
+  structure was imposed rather than found.
+- **Symmetry for its own sake**: parallel section shapes that force real content into a
+  template it doesn't fit.
+
+Preserve the author's voice. An informal aside or a deliberate fragment is not a tell —
+it's a person. Only flag what reads as generated.
+
+Escalate to `avoid-ai-writing` (in a subagent, edit mode) for a full audit when the doc
+is going out under someone's name, or when the user asks for the AI-ism pass by name.
+
+---
+
 ## Modes
 
 Default to matching how the user asked. If unclear, ask which they want.
@@ -239,8 +318,9 @@ Default to matching how the user asked. If unclear, ask which they want.
   quoted material, code blocks, or others' text. After each phase, briefly report what you
   changed and why.
 - **Single phase** — if the user names one ("just declutter this," "run the AI check,"
-  "give it a Strunk pass"), run only that phase. For declutter, use Phase 1; for the other
-  two, invoke the corresponding skill.
+  "give it a Strunk pass"), run only that phase. Naming a phase by its deep-pass identity
+  ("a real Strunk pass," "a full AI-ism audit") is a request to escalate; a plain "tighten
+  this up" is not.
 - **Review only** (when they ask "what would you cut," "where's it dragging," or the doc is
   someone else's finished work) — don't edit. Run the Phase 4 fresh-eyes review and return a
   prioritized list of findings with a specific fix for each, highest-impact first. Let the
