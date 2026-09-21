@@ -6,6 +6,12 @@ When I ask for a plan, present it and stop. Do not start implementing any step â
 including "step 1" â€” until I explicitly approve the plan. Wait for my review of
 each step before moving to the next.
 
+## Implementation process
+
+When there are two or more disparate changes to make, break them into separate
+steps. Each step should be a single, atomic change that can be reviewed and
+merged independently. Avoid combining unrelated changes in a single step.
+
 ## Response style
 
 Keep responses concise. Simple, direct questions can be answered simply and
