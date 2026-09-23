@@ -5,6 +5,7 @@
 	pufl = ![ "$(git branch --show-current)" != "main" ] && [ "$(git branch --show-current)" != "master" ] && git push --force-with-lease origin $(git branch --show-current)
 	get-commits = "!f() { git log --grep=\"$1\" --pretty=oneline --reverse | sed 's/^/- /'; }; f"
 	sw = "!git branch | fzf | xargs git switch"
+	del = !git-del
 [rerere]
 	enabled = true
 [gpg]
