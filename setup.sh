@@ -56,6 +56,14 @@ echo "Requirements"
 for cmd in git rg nvim bun fzf jq yq golangci-lint; do
   command -v "$cmd" >/dev/null && ok "$cmd" || warn "$cmd not installed"
 done
+if command -v mdformat >/dev/null; then
+  ok "mdformat"
+else
+  warn "mdformat not installed, run:"
+  echo "        uv tool install mdformat --with mdformat-frontmatter --with mdformat-config \\"
+  echo "          --with mdformat-gfm --with mdformat-gofmt --with mdformat-shfmt \\"
+  echo "          --with mdformat-tables --with mdformat-toc --with taplo --with wcwidth"
+fi
 
 echo "zsh plugins"
 link_each "$REPO/zsh-plugins" "$ZSH_CUSTOM/plugins" '*/'
