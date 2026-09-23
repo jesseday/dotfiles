@@ -20,6 +20,8 @@ This is not an exhaustive list
 Assuming the above are already installed. Read their documentation for
 installation instructions.
 
+### Symlinks
+
 ```bash
 # Clone the repository
 git clone git@github.com:jesseday/dotfiles.git ~/me/public
@@ -28,9 +30,18 @@ cd ~/me/public
 # install the git del alias
 git config --global alias.del '!'"$HOME/me/public/scripts/git-delete-branches.sh"
 
-# Symlink zsh-plugins
+# Symlink zsh-plugins and themes
 ln -s ~/me/public/zsh-plugins ~/.oh-my-zsh/custom/plugins
+ln -s ~/me/public/zsh-themes ~/.oh-my-zsh/custom/themes
 
 # Symlink claude skills
 ln -s ~/me/public/skills ~/.claude/skills
+```
+
+### Source .zshrc.local
+
+- `.zshrc.local` will source aliases and other config.
+- In `~/.zshrc` add the following line
+```bash
+source ~/me/public/config/.zshrc.local
 ```
