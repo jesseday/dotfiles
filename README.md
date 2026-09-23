@@ -14,6 +14,9 @@ This is not an exhaustive list
 - [nvim](https://github.com/jesseday/kickstart.nvim)
 - [bun](https://bun.com/)
 - [fzf](https://github.com/junegunn/fzf)
+- [jq](https://jqlang.org/) (Claude statusline)
+- [yq](https://github.com/mikefarah/yq) (Zed golangci-lint LSP wrapper)
+- [golangci-lint](https://golangci-lint.run/) (Go formatting/linting in Zed and `gcfmt`)
 
 ## Installing
 
@@ -27,7 +30,7 @@ git clone git@github.com:jesseday/dotfiles.git ~/me/public
 
 `setup.sh` is safe to re-run. It:
 
-- Symlinks each zsh plugin, theme, and Claude skill into place,
+- Symlinks each zsh plugin, theme, Claude skill, and Zed config file into place,
   skipping anything that already exists.
 - Adds `source .../config/.zshrc.local` to `~/.zshrc` if missing.
   `.zshrc.local` puts `bin/` on PATH and sources the aliases.

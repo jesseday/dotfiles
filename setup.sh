@@ -41,7 +41,7 @@ link_each() {
 
 echo "Requirements"
 [ -d "$HOME/.oh-my-zsh" ] && ok "oh-my-zsh" || warn "oh-my-zsh not installed"
-for cmd in git rg nvim bun fzf; do
+for cmd in git rg nvim bun fzf jq yq golangci-lint; do
   command -v "$cmd" >/dev/null && ok "$cmd" || warn "$cmd not installed"
 done
 
@@ -53,6 +53,20 @@ link_each "$REPO/zsh-themes" "$ZSH_CUSTOM/themes" '*.zsh-theme'
 
 echo "Claude skills"
 link_each "$REPO/skills" "$HOME/.claude/skills" '*/'
+
+echo "Zed"
+# Zed creates a default settings.json on first launch, so back up any real
+# file in the way instead of skipping it.
+mkdir -p "$HOME/.config/zed"
+for f in settings.json keymap.json gci-lsp.sh; do
+  dst="$HOME/.config/zed/$f"
+  if [ -f "$dst" ] && [ ! -L "$dst" ]; then
+    backup="$dst.bak-$(date +%Y%m%d-%H%M%S)"
+    mv "$dst" "$backup"
+    add "backed up $dst to $backup"
+  fi
+  link "$REPO/zed/$f" "$dst"
+done
 
 echo "~/.zshrc"
 zshrc_line="source $REPO/config/.zshrc.local"

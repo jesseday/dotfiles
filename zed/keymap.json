@@ -1,0 +1,93 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-k cmd-r": "editor::Rename",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-d": [
+        "editor::SelectNext",
+        {
+          "replace_newest": false,
+        },
+      ],
+      "alt-up": "editor::MoveLineUp",
+      "alt-down": "editor::MoveLineDown",
+    },
+  },
+  {
+    "bindings": {
+      "cmd-~": null,
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-b": "editor::GoToDefinition"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-shift-b": "editor::FindAllReferences"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "cmd-[": "editor::Outdent"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "cmd-]": "editor::Indent"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-[": "pane::GoBack"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl--": "pane::GoBack"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-]": "pane::GoForward"
+    }
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "ctrl-_": "pane::GoForward"
+    }
+  }
+]
