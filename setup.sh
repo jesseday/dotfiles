@@ -37,12 +37,14 @@ link_or_backup() {
 }
 
 # link_each <src_dir> <dst_dir> <glob>: link each matching entry of src_dir
-# into dst_dir. If dst_dir is itself a link to src_dir, there's nothing to do.
+# into dst_dir. dst_dir must be a real directory: if it's a link to src_dir,
+# anything an app writes into dst_dir (e.g. Claude's synced skills) lands in
+# the repo.
 link_each() {
   local src_dir=$1 dst_dir=$2 glob=$3 entry
-  if [ "$(cd "$dst_dir" 2>/dev/null && pwd -P)" = "$src_dir" ]; then
-    ok "$dst_dir (linked to $src_dir)"
-    return
+  if [ -L "$dst_dir" ] && [ "$(cd "$dst_dir" && pwd -P)" = "$src_dir" ]; then
+    rm "$dst_dir"
+    add "replaced link $dst_dir -> $src_dir with a directory"
   fi
   mkdir -p "$dst_dir"
   for entry in "$src_dir"/$glob; do
