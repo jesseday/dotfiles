@@ -20,37 +20,18 @@ This is not an exhaustive list
 Assuming the above are already installed. Read their documentation for
 installation instructions.
 
-### Symlinks
-
 ```bash
-# Clone the repository
 git clone git@github.com:jesseday/dotfiles.git ~/me/public
-cd ~/me/public
-
-# Symlink each zsh plugin, then add its name to plugins=(...) in ~/.zshrc
-for p in ~/me/public/zsh-plugins/*/; do
-  ln -s "${p%/}" ~/.oh-my-zsh/custom/plugins/
-done
-ln -s ~/me/public/zsh-themes ~/.oh-my-zsh/custom/themes
-
-# Symlink claude skills
-ln -s ~/me/public/skills ~/.claude/skills
+~/me/public/setup.sh
 ```
 
-### Source .zshrc.local
+`setup.sh` is safe to re-run. It:
 
-- `.zshrc.local` will source aliases and other config.
-- In `~/.zshrc` add the following line
-
-```bash
-source ~/me/public/config/.zshrc.local
-```
-
-### Include .gitconfig.local
-
-- in `~/.gitconfig`, include `.gitconfig.local`
-
-```
-[include]
-  path = ~/me/public/config/.gitconfig.local
-```
+- Symlinks each zsh plugin, theme, and Claude skill into place,
+  skipping anything that already exists.
+- Adds `source .../config/.zshrc.local` to `~/.zshrc` if missing.
+  `.zshrc.local` puts `bin/` on PATH and sources the aliases.
+- Adds `config/.gitconfig.local` to `~/.gitconfig` as an include if missing.
+- Warns about missing requirements and about plugins not listed in
+  `plugins=(...)` in `~/.zshrc`. Add those by hand, since `plugins`
+  has to be set before oh-my-zsh loads.
