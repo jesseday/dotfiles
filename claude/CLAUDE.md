@@ -37,8 +37,8 @@ rename the identifier and drop the comment.
 ## File paths
 
 When referring to files, always write the path starting from the root of the
-repo (e.g. `services/districts/rostering/admins.go`), not relative to the
-current working directory or as a bare filename.
+repo (e.g. `path/to/service/file.go`), not relative to the current working
+directory or as a bare filename.
 
 ## GitHub access
 
