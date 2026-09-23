@@ -30,7 +30,7 @@ git clone git@github.com:jesseday/dotfiles.git ~/me/public
 
 `setup.sh` is safe to re-run. It:
 
-- Symlinks each zsh plugin, theme, Claude skill, and Zed config file into place,
+- Symlinks each zsh plugin, theme, Claude skill, and Zed/Ghostty config file into place,
   skipping anything that already exists.
 - Adds `source .../config/.zshrc.local` to `~/.zshrc` if missing.
   `.zshrc.local` puts `bin/` on PATH and sources the aliases.

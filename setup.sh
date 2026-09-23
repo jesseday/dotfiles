@@ -24,6 +24,18 @@ link() {
   fi
 }
 
+# link_or_backup <src> <dst>: like link, but a real file at dst (e.g. a
+# default config the app created on first launch) is backed up, not skipped.
+link_or_backup() {
+  local src=$1 dst=$2 backup
+  if [ -f "$dst" ] && [ ! -L "$dst" ]; then
+    backup="$dst.bak-$(date +%Y%m%d-%H%M%S)"
+    mv "$dst" "$backup"
+    add "backed up $dst to $backup"
+  fi
+  link "$src" "$dst"
+}
+
 # link_each <src_dir> <dst_dir> <glob>: link each matching entry of src_dir
 # into dst_dir. If dst_dir is itself a link to src_dir, there's nothing to do.
 link_each() {
@@ -55,18 +67,15 @@ echo "Claude skills"
 link_each "$REPO/skills" "$HOME/.claude/skills" '*/'
 
 echo "Zed"
-# Zed creates a default settings.json on first launch, so back up any real
-# file in the way instead of skipping it.
 mkdir -p "$HOME/.config/zed"
 for f in settings.json keymap.json gci-lsp.sh; do
-  dst="$HOME/.config/zed/$f"
-  if [ -f "$dst" ] && [ ! -L "$dst" ]; then
-    backup="$dst.bak-$(date +%Y%m%d-%H%M%S)"
-    mv "$dst" "$backup"
-    add "backed up $dst to $backup"
-  fi
-  link "$REPO/zed/$f" "$dst"
+  link_or_backup "$REPO/zed/$f" "$HOME/.config/zed/$f"
 done
+
+echo "Ghostty"
+ghostty_dir="$HOME/Library/Application Support/com.mitchellh.ghostty"
+mkdir -p "$ghostty_dir"
+link_or_backup "$REPO/ghostty/config.ghostty" "$ghostty_dir/config.ghostty"
 
 echo "~/.zshrc"
 zshrc_line="source $REPO/config/.zshrc.local"
