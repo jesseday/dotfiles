@@ -1,8 +1,7 @@
 # Configuration files
 
-Updated version of laptop configuration. To use them, symlink
-scripts and rc files as needed. See README files in subdirectories for
-more details.
+Updated version of laptop configuration. To use them, symlink scripts and rc
+files as needed. See README files in subdirectories for more details.
 
 ## Requirements
 
@@ -16,7 +15,8 @@ This is not an exhaustive list
 - [fzf](https://github.com/junegunn/fzf)
 - [jq](https://jqlang.org/) (Claude statusline)
 - [yq](https://github.com/mikefarah/yq) (Zed golangci-lint LSP wrapper)
-- [golangci-lint](https://golangci-lint.run/) (Go formatting/linting in Zed and `gcfmt`)
+- [golangci-lint](https://golangci-lint.run/) (Go formatting/linting in Zed and
+  `gcfmt`)
 
 ## Installing
 
@@ -30,16 +30,15 @@ git clone git@github.com:jesseday/dotfiles.git ~/me/public
 
 `setup.sh` is safe to re-run. It:
 
-- Symlinks each zsh plugin, theme, Claude skill, and Zed/Ghostty config file into place,
-  skipping anything that already exists.
-- Adds `source .../config/.zshrc.local` to `~/.zshrc` if missing.
-  `.zshrc.local` puts `bin/` on PATH and sources the aliases.
+- Symlinks each zsh plugin, theme, Claude skill, and Zed/Ghostty config file
+  into place, skipping anything that already exists.
+- Adds `source .../config/.zshrc.local` to `~/.zshrc` if missing. `.zshrc.local`
+  puts `bin/` on PATH and sources the aliases.
 - Adds `config/.gitconfig.local` to `~/.gitconfig` as an include if missing.
 - Warns about missing requirements and about plugins not listed in
-  `plugins=(...)` in `~/.zshrc`. Add those by hand, since `plugins`
-  has to be set before oh-my-zsh loads.
+  `plugins=(...)` in `~/.zshrc`. Add those by hand, since `plugins` has to be
+  set before oh-my-zsh loads.
 
-When setup replaces an existing config, it keeps a `.bak-<timestamp>`
-copy. Once you're sure nothing was lost, `./cleanup-backups.sh` lists the
-backups, shows whether each matches the repo copy, and deletes them after
-you confirm.
+When setup replaces an existing config, it keeps a `.bak-<timestamp>` copy. Once
+you're sure nothing was lost, `./cleanup-backups.sh` lists the backups, shows
+whether each matches the repo copy, and deletes them after you confirm.

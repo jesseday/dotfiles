@@ -27,9 +27,9 @@ the code, reply to each, then advance the round.
 
 ## Sandbox mode — how replies get written
 
-The `crit` daemon writes to `~/.crit`, which is **outside the writable sandbox in
-this environment**, so `crit comment` and `crit` cannot be run from a tool call
-here (and `dangerouslyDisableSandbox` is disabled by policy).
+The `crit` daemon writes to `~/.crit`, which is **outside the writable sandbox
+in this environment**, so `crit comment` and `crit` cannot be run from a tool
+call here (and `dangerouslyDisableSandbox` is disabled by policy).
 
 **Default behavior in this environment:** do NOT try to run `crit comment` or
 `crit`. Instead, after making the code changes, **output the exact
@@ -74,13 +74,14 @@ For every comment the script prints (resolved != true):
 1. **Read its `replies` thread first.** If you have already replied, the
    reviewer may be following up *conversationally* rather than requesting a new
    code change — answer the follow-up, don't redo the work. A fresh comment with
-   no replies is a new request. Note the reviewer's own follow-up replies can add
-   *new* requirements on top of the original comment — fold those in too.
+   no replies is a new request. Note the reviewer's own follow-up replies can
+   add *new* requirements on top of the original comment — fold those in too.
 2. Decide whether it needs a **code change** or is a **question** to answer:
-   - Code change → make the edit at the comment's file + `start_line`/`end_line`.
+   - Code change → make the edit at the comment's file +
+     `start_line`/`end_line`.
    - Question → answer it directly in the reply; change code only if the answer
      reveals an actual problem.
-   - A `suggestion` block (```suggestion) is a proposed replacement for the
+   - A `suggestion` block (\`\`\`suggestion) is a proposed replacement for the
      anchored text — apply it (adapting as needed) unless it's wrong.
 3. If a comment proposes a behavior change you're unsure about, surface the
    trade-off to the user rather than deciding unilaterally.
@@ -107,8 +108,8 @@ crit comment --reply-to <comment-id> --author Claude "<explanation>"
   direct answer. Avoid shell pitfalls in the quoted text — no backticks (command
   substitution) and no `$`; write plain prose.
 
-**In this sandboxed environment (default):** don't run these. Print them all in a
-single fenced block so the user can paste and run them at once, e.g.:
+**In this sandboxed environment (default):** don't run these. Print them all in
+a single fenced block so the user can paste and run them at once, e.g.:
 
 ```bash
 crit comment --reply-to c_abc123 --author Claude "Removed the location filters from the frontend task list."
@@ -131,4 +132,5 @@ it in the block you output — leave advancing the round to the user (the prompt
 decision that's genuinely the user's to make, surface it rather than resolving
 it unilaterally.
 
-\[crit\]: a local code-review tool whose daemon stores reviews under `~/.crit/reviews/`.
+\[crit\]: a local code-review tool whose daemon stores reviews under
+`~/.crit/reviews/`.

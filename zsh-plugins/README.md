@@ -1,10 +1,10 @@
 # Oh My ZSH Plugins
 
-Custom oh-my-zsh plugins, kept here for version control. Each plugin is
-a directory holding `<name>.plugin.zsh` plus any script it runs.
+Custom oh-my-zsh plugins, kept here for version control. Each plugin is a
+directory holding `<name>.plugin.zsh` plus any script it runs.
 
-To install one, symlink its directory into `~/.oh-my-zsh/custom/plugins`
-and add its name to `plugins=(...)` in `~/.zshrc`.
+To install one, symlink its directory into `~/.oh-my-zsh/custom/plugins` and add
+its name to `plugins=(...)` in `~/.zshrc`.
 
 For example
 

@@ -4,9 +4,9 @@
 # Why this exists: the golangci-lint-langserver matches issues to the open file
 # by a path relative to the nearest go.mod. In this go.work monorepo the repo's
 # .golangci.yml lives at the workspace root, so golangci-lint's default
-# `relative-path-mode: cfg` reports paths relative to that root (e.g.
-# admin-reports/pkg/spec/foo.go), which never matches the module-relative path
-# the langserver expects (pkg/spec/foo.go) -> diagnostics silently dropped.
+# `relative-path-mode: cfg` reports paths relative to that root, which never
+# matches the module-relative path the langserver expects
+# (pkg/spec/foo.go) -> diagnostics silently dropped.
 #
 # Fix: derive a temp config from whatever .golangci.yml golangci-lint would
 # normally discover, override `run.relative-path-mode: gomod` (config-only; no
