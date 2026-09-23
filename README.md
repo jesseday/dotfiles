@@ -27,8 +27,10 @@ installation instructions.
 git clone git@github.com:jesseday/dotfiles.git ~/me/public
 cd ~/me/public
 
-# Symlink zsh-plugins and themes
-ln -s ~/me/public/zsh-plugins ~/.oh-my-zsh/custom/plugins
+# Symlink each zsh plugin, then add its name to plugins=(...) in ~/.zshrc
+for p in ~/me/public/zsh-plugins/*/; do
+  ln -s "${p%/}" ~/.oh-my-zsh/custom/plugins/
+done
 ln -s ~/me/public/zsh-themes ~/.oh-my-zsh/custom/themes
 
 # Symlink claude skills

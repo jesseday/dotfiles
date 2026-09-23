@@ -6,8 +6,8 @@
 #   retro --from 2026-03-01      # since March 1
 #   retro --from 2026-02-01 --to 2026-02-28  # February only
 
-# Resolve the script from this plugin's repo root (works through a symlink).
-typeset -g _retro_script="${0:A:h:h}/scripts/retro.mjs"
+# Resolve the script next to this plugin (works through a symlink).
+typeset -g _retro_script="${0:A:h}/retro.mjs"
 
 function retro() {
   bunx zx "$_retro_script" "$@"

@@ -1,13 +1,17 @@
 # Oh My ZSH Plugins
 
-The scripts in this directory are plugins for oh-my-zsh.
-They are kept here in order to keep them in version control. To
-add them to oh-my-zsh, symlink them into the ~/.oh-my-zsh/custom/ 
-directory.
+Custom oh-my-zsh plugins, kept here for version control. Each plugin is
+a directory holding `<name>.plugin.zsh` plus any script it runs.
+
+To install one, symlink its directory into `~/.oh-my-zsh/custom/plugins`
+and add its name to `plugins=(...)` in `~/.zshrc`.
 
 For example
 
 ```bash
-cd ~/.oh-my-zsh/custom
-ln -s /path/to/this-repo/zsh-plugins/list-todos.zsh list-todos.zsh
+ln -s /path/to/this-repo/zsh-plugins/list-todos ~/.oh-my-zsh/custom/plugins/list-todos
+```
+
+```zsh
+plugins=(git list-todos)
 ```

@@ -1,6 +1,6 @@
 CURRENT_DIR=${${(%):-%x}:A:h}
-# Repo scripts (used by git aliases in .gitconfig.local)
-export PATH="${CURRENT_DIR:h}/scripts:$PATH"
+# Repo executables (git-* files here become git subcommands, e.g. `git del`)
+export PATH="${CURRENT_DIR:h}/bin:$PATH"
 
 # Bun
 export BUN_INSTALL="$HOME/.bun"
