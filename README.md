@@ -38,3 +38,8 @@ git clone git@github.com:jesseday/dotfiles.git ~/me/public
 - Warns about missing requirements and about plugins not listed in
   `plugins=(...)` in `~/.zshrc`. Add those by hand, since `plugins`
   has to be set before oh-my-zsh loads.
+
+When setup replaces an existing config, it keeps a `.bak-<timestamp>`
+copy. Once you're sure nothing was lost, `./cleanup-backups.sh` lists the
+backups, shows whether each matches the repo copy, and deletes them after
+you confirm.
