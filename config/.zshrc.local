@@ -1,10 +1,17 @@
 CURRENT_DIR=${${(%):-%x}:A:h}
+# Repo scripts (used by git aliases in .gitconfig.local)
+export PATH="${CURRENT_DIR:h}/scripts:$PATH"
+
 # Bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Mise
-eval "$(/Users/jesse/.local/bin/mise activate zsh)"
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
+else
+  echo "zshrc.local: mise not installed" >&2
+fi
 
 
 # Aliases

@@ -27,9 +27,6 @@ installation instructions.
 git clone git@github.com:jesseday/dotfiles.git ~/me/public
 cd ~/me/public
 
-# install the git del alias
-git config --global alias.del '!'"$HOME/me/public/scripts/git-delete-branches.sh"
-
 # Symlink zsh-plugins and themes
 ln -s ~/me/public/zsh-plugins ~/.oh-my-zsh/custom/plugins
 ln -s ~/me/public/zsh-themes ~/.oh-my-zsh/custom/themes
