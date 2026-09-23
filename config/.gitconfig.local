@@ -1,0 +1,14 @@
+[alias]
+	stuff = stash -u
+	back = "checkout -"
+	pu = ![ "$(git branch --show-current)" != "main" ] && [ "$(git branch --show-current)" != "master" ] && git push origin $(git branch --show-current)
+	pufl = ![ "$(git branch --show-current)" != "main" ] && [ "$(git branch --show-current)" != "master" ] && git push --force-with-lease origin $(git branch --show-current)
+	get-commits = "!f() { git log --grep=\"$1\" --pretty=oneline --reverse | sed 's/^/- /'; }; f"
+	sw = "!git branch | fzf | xargs git switch"
+	del = !/Users/jesseday/me/public/scripts/git-delete-branches.sh
+[rerere]
+	enabled = true
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true

@@ -42,6 +42,16 @@ ln -s ~/me/public/skills ~/.claude/skills
 
 - `.zshrc.local` will source aliases and other config.
 - In `~/.zshrc` add the following line
+
 ```bash
 source ~/me/public/config/.zshrc.local
+```
+
+### Include .gitconfig.local
+
+- in `~/.gitconfig`, include `.gitconfig.local`
+
+```
+[include]
+  path = ~/me/public/config/.gitconfig.local
 ```
