@@ -54,7 +54,7 @@ support items, and questions — live in the Obsidian vault at
 `~/Documents/notes/`. That absolute path is the only location. The vault is
 **not** symlinked into any repo, so never write notes inside a repo working
 tree. Write vault files with the Write tool, not Bash — see the skill. The
-conventions for all of it live in the **`khan-notes` skill**; invoke it whenever
+conventions for all of it live in the **`notes` skill**; invoke it whenever
 summarizing a session, doing or logging ticket work, recording a decision,
 triaging a support issue, writing a ticket draft, or writing down a question.
 These note files must never be committed to the repository.

@@ -1,7 +1,7 @@
 ---
 name: crit-review
 description: Address review comments from a crit code review. Use whenever a prompt hands you crit review comments to work through — including when it says "the review finished with N unresolved comments" and pastes comment JSON inline (objects with id/path/start_line/body), when it points to a ~/.crit/reviews/<id>/review.json file, and/or when it tells you to reply with `crit comment --reply-to <id> --author <name>` and then run `crit` or `crit --session <id>`. Also use when asked to read, triage, address, or reply to crit comments / a crit review round.
-allowed-tools: Bash(python3 /Users/jesseday/.claude/skills/crit-review/scripts/show_review.py:*), Bash(crit comment:*), Bash(crit:*)
+allowed-tools: Bash(python3 */crit-review/scripts/show_review.py *), Bash(crit comment:*), Bash(crit:*)
 ---
 
 # Crit Review Response
@@ -19,7 +19,7 @@ A crit round hands you a prompt in one of two shapes:
   `crit comment --reply-to <comment-id> --author <your-name> "<explanation>"`,
   and "When you're done, run: `crit --session <id>`".
 - **File reference (older format):** "Review comments are in
-  /Users/jesseday/.crit/reviews/<id>/review.json …", same reply command, and
+  ~/.crit/reviews/<id>/review.json …", same reply command, and
   "When done run: `crit`".
 
 Either way the workflow is the same: read every open comment, address each in

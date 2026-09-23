@@ -135,9 +135,15 @@
       "initialization_options": {
         // Wrapper derives a temp config from the discovered .golangci.yml with
         // relative-path-mode=gomod (required so the langserver can match issue
-        // paths in this go.work monorepo) + exhaustive enabled. Nothing is
-        // committed; see ~/.config/zed/gci-lsp.sh.
-        "command": ["/Users/jesseday/.config/zed/gci-lsp.sh"],
+        // paths in go.work monorepos) + exhaustive enabled. Nothing is
+        // committed; see ~/.config/zed/gci-lsp.sh. The langserver execs this
+        // without a shell, so bash expands $HOME and forwards appended args.
+        "command": [
+          "bash",
+          "-c",
+          "exec \"$HOME/.config/zed/gci-lsp.sh\" \"$@\"",
+          "gci-lsp",
+        ],
       },
     },
   },

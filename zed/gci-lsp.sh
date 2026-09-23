@@ -2,7 +2,7 @@
 # golangci-lint language-server wrapper for Zed.
 #
 # Why this exists: the golangci-lint-langserver matches issues to the open file
-# by a path relative to the nearest go.mod. In this go.work monorepo the repo's
+# by a path relative to the nearest go.mod. In a go.work monorepo the repo's
 # .golangci.yml lives at the workspace root, so golangci-lint's default
 # `relative-path-mode: cfg` reports paths relative to that root, which never
 # matches the module-relative path the langserver expects
