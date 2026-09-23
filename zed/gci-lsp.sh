@@ -17,8 +17,9 @@
 # target directory as the final argument, so config discovery works from "$@".
 set -euo pipefail
 
-GCL=/opt/homebrew/bin/golangci-lint
-YQ=/opt/homebrew/bin/yq
+# Resolved from PATH so brew, mise, or a project-local build all work.
+GCL="$(command -v golangci-lint)"
+YQ="$(command -v yq)"
 
 base="$("$GCL" config path 2>/dev/null || true)"
 
