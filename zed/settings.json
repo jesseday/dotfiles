@@ -70,7 +70,7 @@
     "dock": "left",
     "tree_view": true,
   },
-  "buffer_font_family": ".ZedMono",
+  "buffer_font_family": "MonaspiceAr Nerd Font",
   "telemetry": {
     "diagnostics": true,
     "metrics": false,
@@ -95,7 +95,7 @@
       "formatter": {
         "external": {
           "command": "mdformat",
-          "arguments": ["--wrap", "keep", "--number", "--compact-tables", "-"],
+          "arguments": ["--wrap", "80", "--number", "--compact-tables", "-"],
         },
       },
     },
