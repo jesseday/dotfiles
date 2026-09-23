@@ -1,0 +1,11 @@
+CURRENT_DIR=${${(%):-%x}:A:h}
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Mise
+eval "$(/Users/jesse/.local/bin/mise activate zsh)"
+
+
+# Aliases
+source "$CURRENT_DIR/.aliases.local"
