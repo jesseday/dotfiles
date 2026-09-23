@@ -1,0 +1,24 @@
+# General
+alias ll="ls -lah"
+alias pn="pnpm"
+alias sites="~/www"
+
+# i keep messing up ag/rg as i just switched to ripgrep.
+alias ag="rg"
+
+# Git
+alias ga="git add"
+alias gpu="git push -u"
+alias gp="git push"
+alias gm="git commit"
+alias gap="git add -p"
+alias gco="git checkout"
+alias gc="git commit"
+alias gs="git status"
+alias gsh="git stash"
+alias gsf="git stuff"
+alias groot="cd $(git rev-parse --show-toplevel)"
+alias ganw="sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero' -"
+alias gcun="git status --porcelain \
+| awk '$1 == \"M\" {print $2}' \
+| xargs git checkout"
