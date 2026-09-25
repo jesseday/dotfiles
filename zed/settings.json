@@ -70,7 +70,7 @@
     "dock": "left",
     "tree_view": true,
   },
-  "buffer_font_family": "MonaspiceAr Nerd Font",
+  "buffer_font_family": "MonaspiceXe Nerd Font",
   "telemetry": {
     "diagnostics": true,
     "metrics": false,
