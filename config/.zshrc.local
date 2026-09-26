@@ -14,6 +14,12 @@ else
   echo "zshrc.local: mise not installed" >&2
 fi
 
+# Add Latex distro: MacTeX
+# Used by vscode latex workshop
+export MACTEX_INSTALL="/usr/local/texlive/2026/bin/universal-darwin"
+if [[ -d "$MACTEX_INSTALL" ]]; then
+    export PATH="$MACTEX_INSTALL:$PATH"
+fi
 
 # Aliases
 source "$CURRENT_DIR/.aliases.local"
