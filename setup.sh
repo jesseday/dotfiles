@@ -76,6 +76,9 @@ link_each "$REPO/zsh-themes" "$ZSH_CUSTOM/themes" '*.zsh-theme'
 echo "Claude skills"
 link_each "$REPO/skills" "$HOME/.claude/skills" '*/'
 
+echo "Claude user instructions"
+link_or_backup "$REPO/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+
 echo "Zed"
 mkdir -p "$HOME/.config/zed"
 for f in settings.json keymap.json gci-lsp.sh; do

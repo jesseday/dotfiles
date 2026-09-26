@@ -4,14 +4,12 @@ This directory contains instruction files for configuring and guiding the
 behavior of AI agents. Each file typically includes specific guidelines, rules,
 or parameters that the agent should follow during its interactions.
 
-## To setup in a new repo
+## Setup
 
-These instructions should stay centralized in a single place. In order to use in
-a project, symlink them into the project directory.
+`setup.sh` symlinks `CLAUDE.md` to `~/.claude/CLAUDE.md`, which Claude Code
+loads in every session regardless of project. Edits here take effect in new
+sessions.
 
-For example:
-
-```bash
-cd ~/code/my-project
-ln -s /path/to/this-repo/claude/CLAUDE.md CLAUDE.md
-```
+Don't also symlink it into individual projects: a project's own `CLAUDE.md` is
+loaded on top of this one, so a copy there would load the same instructions
+twice.
