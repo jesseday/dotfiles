@@ -54,7 +54,9 @@
     "mode": "subtle",
   },
   "agent": {
-    "sidebar_side": "right",
+    "threads_sidebar": {
+      "position": "right",
+    },
     "dock": "right",
     "enable_feedback": false,
     "inline_assistant_model": {
@@ -70,7 +72,7 @@
     "dock": "left",
     "tree_view": true,
   },
-  "buffer_font_family": "MonaspiceXe Nerd Font",
+  "buffer_font_family": "MonaspiceNe Nerd Font",
   "telemetry": {
     "diagnostics": true,
     "metrics": false,
@@ -87,6 +89,10 @@
     "dark": "Ayu Mirage",
   },
   "languages": {
+    "Proto": {
+      "tab_size": 4,
+      "format_on_save": "off",
+    },
     "JSON": {
       "auto_indent": "none",
       "tab_size": 4,
