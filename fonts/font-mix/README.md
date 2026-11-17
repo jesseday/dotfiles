@@ -14,25 +14,24 @@ read.
 ## Setup and run
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install fonttools
-.venv/bin/python mix.py ./out --upright <files...> --italic <files...> --name "<family name>"
+uv run mix.py ./out --upright "<family name>" <files... >--italic <files... >--name
 ```
 
 For example, Monaspace Neon uprights with Radon italics:
 
 ```bash
-.venv/bin/python mix.py ./out \
-  --upright ~/Documents/fonts/Monaspace/MonaspiceNeNerdFont-*.otf \
-  --italic ~/Documents/fonts/Monaspace/MonaspiceRnNerdFont-*.otf \
-  --name "Monaspice Mix"
+uv run mix.py ./out \
+	--upright ~/Documents/fonts/Monaspace/MonaspiceNeNerdFont-*.otf \
+	--italic ~/Documents/fonts/Monaspace/MonaspiceRnNerdFont-*.otf \
+	--name "Monaspice Mix"
 ```
 
-To check the script after changing it, run `.venv/bin/python test_mix.py`.
+To check the script after changing it, run `uv run test_mix.py`.
 
 ## Install
 
-`open out/*`, then click Install in Font Book. To rebuild, remove the old
-family in Font Book first, then restart Zed.
+`open out/*`, then click Install in Font Book. To rebuild, remove the old family
+in Font Book first, then restart Zed.
 
 ## Use
 
