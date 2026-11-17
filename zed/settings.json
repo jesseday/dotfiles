@@ -182,7 +182,7 @@
     "enabled": true,
     "toggle_on_modifiers_press": { "control": true, "alt": true },
   },
-  "buffer_font_family": "Monaspice Mix",
+  "buffer_font_family": "MonaspiceNeAr Nerd Font",
   "ui_font_size": 16,
   "buffer_font_size": 17.0,
   "theme": {
@@ -195,11 +195,16 @@
       "version_control.conflict_marker.ours": "#a1c18126",
       "version_control.conflict_marker.theirs": "#74ade826",
       "syntax": {
+        // Some comment
         "comment": {
+          "color": "#8A93A3",
           "font_style": "italic",
+          "font_weight": 300,
         },
         "comment.doc": {
+          "color": "#8A93A3",
           "font_style": "italic",
+          "font_weight": 300,
         },
       },
     },
