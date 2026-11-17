@@ -20,12 +20,6 @@
       "args": ["acp"],
     },
   },
-  "theme_overrides": {
-    "Ayu Mirage": {
-      "version_control.conflict_marker.ours": "#a1c18126",
-      "version_control.conflict_marker.theirs": "#74ade826",
-    },
-  },
   "cli_default_open_behavior": "new_window",
   "project_panel": {
     "hide_hidden": false,
@@ -72,7 +66,6 @@
     "dock": "left",
     "tree_view": true,
   },
-  "buffer_font_family": "MonaspiceNe Nerd Font",
   "telemetry": {
     "diagnostics": true,
     "metrics": false,
@@ -81,12 +74,9 @@
     "trust_all_worktrees": true,
   },
   "base_keymap": "VSCode",
-  "ui_font_size": 16,
-  "buffer_font_size": 17.0,
-  "theme": {
-    "mode": "dark",
-    "light": "One Light",
-    "dark": "Ayu Mirage",
+  "file_scan_exclusions": ["**/node_modules"],
+  "preview_tabs": {
+    "enabled": false,
   },
   "languages": {
     "Proto": {
@@ -150,6 +140,47 @@
           "exec \"$HOME/.config/zed/gci-lsp.sh\" \"$@\"",
           "gci-lsp",
         ],
+      },
+    },
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "inlayHints": {
+            "enumMemberValues": { "enabled": true },
+            "functionLikeReturnTypes": { "enabled": true },
+            "parameterNames": { "enabled": "all" },
+            "parameterTypes": { "enabled": true },
+            "propertyDeclarationTypes": { "enabled": true },
+            "variableTypes": { "enabled": true },
+          },
+        },
+      },
+    },
+  },
+  // Hidden until Ctrl+Alt is held, like VS Code's "offUnlessPressed".
+  "inlay_hints": {
+    "enabled": true,
+    "toggle_on_modifiers_press": { "control": true, "alt": true },
+  },
+  "buffer_font_family": "Monaspice Mix",
+  "ui_font_size": 16,
+  "buffer_font_size": 17.0,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Ayu Mirage",
+  },
+  "theme_overrides": {
+    "Ayu Mirage": {
+      "version_control.conflict_marker.ours": "#a1c18126",
+      "version_control.conflict_marker.theirs": "#74ade826",
+      "syntax": {
+        "comment": {
+          "font_style": "italic",
+        },
+        "comment.doc": {
+          "font_style": "italic",
+        },
       },
     },
   },
