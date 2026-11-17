@@ -3,3 +3,8 @@ claude/.claude/settings.local.json
 skills/private/*
 iterm/*
 tmp/*
+fonts/font-mix/.venv/
+fonts/font-mix/out/
+fonts/**/*.otf
+fonts/**/*.ttf
+fonts/**/__pycache__/
