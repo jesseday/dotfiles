@@ -2,6 +2,10 @@ CURRENT_DIR=${${(%):-%x}:A:h}
 # Repo executables (git-* files here become git subcommands, e.g. `git del`)
 export PATH="${CURRENT_DIR:h}/bin:$PATH"
 
+# Disable telemetry for various tools including
+# google's modern web skill
+DISABLE_TELEMETRY=1
+
 # Bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
